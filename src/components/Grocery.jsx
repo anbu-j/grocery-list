@@ -11,76 +11,105 @@ class Grocery extends Component {
            items:"",
            brands:"",
            units:'',
-           quantity:'0',
+           quantity:'',
            isPurchased:false
 
         }
     }
+    handleChange=(eventToBeChanged)=>{
+        this.setState(
+            {
+                [eventToBeChanged.target.id]: eventToBeChanged.target.value
+            }
+        )
+    }
 
-    changeUserInput=(input)=>{
-        // const items = this.state.userInput.split(',')
-         this.setState({ 
-             userInput:input,
-             //list:"item"
-         },()=>console.log(input)
-         )
-     }
 
-     addToList=(in1,in2,in3,in4)=>{
-        let listArray = this.state.items
-        let newObj = {
-                "item": in1,
-                "brand": in2,
-                "quantity": in4,
-                "units": in3,
-                "isPurchased":true
-        }
-         this.setState({
+     addToList=()=>{
+        let listArray = this.state.list
+       // this.preventDefault();
+        //console.log()
+        console.log(this.state.item)
+        console.log(this.state.brand)
+        console.log(this.state.units)
+        console.log(this.state.quantity)
+        var newItems = {
+            "item": this.state.item,
+            "brand":this.state.brand,
+            "quantity":this.state.quantity,
+            "units":this.state.units,
+            isPurchased:false
+            
+        };
+        console.log(newItems)
+        listArray.push(newItems)
+        this.setState({
+            list:listArray,
+            /*[this.state.item.value]:'',
+            [this.state.brand.value]:'',
+            [this.state.units.value]:'',
+            [this.state.quantity.value]:'',
+            [this.state.item]:'',
+            [this.state.brand]:'',
+            [this.state.units]:'',
+        [this.state.quantity]:''*/
+
+        })
+        console.log(this.state.list)
+    }
+          /*this.setState({
              items:listArray,
-             newObj
+              newObj
          })
 
-     }
+     }*/
 
     render() {
         return (
             
             <div className="mainContainer">
-                <h1> ENTER Grocery list</h1>
+                <h1> Grocery Bag!</h1>
+            <div className="subContainer">
             <div className="inpContainer">
-                        <input type="text" className="inpTab" value = {this.state.item} 
-                        onChange={
-                        (event)=> {
+                <form className="inpForm">
+                
+                        <input type="text" className="inpTab"  placeholder="Item"
+                        onChange={this.handleChange} id="item"
+                        />
+                       {/* (event)=> {
+                           // this.changeUserInput(event.target.value)
+                       // }
+                    } /> */}
+                        <input type="text" className="inpTab"  placeholder="Brand"
+                        onChange={this.handleChange} id="brand"/>
+                       {/* (event)=> {
                             this.changeUserInput(event.target.value)
                         }
-                    } />
-                        <input type="text" className="inpTab" value = {this.state.brand} 
-                        onChange={
-                        (event)=> {
+                    } /> */}
+                        <input type="text" className="inpTab"  placeholder="No of units"
+                        onChange={this.handleChange} id="units"/>
+                       {/*} (event)=> {
                             this.changeUserInput(event.target.value)
                         }
-                    } />
-                        <input type="text" className="inpTab" value = {this.state.units} 
-                        onChange={
-                        (event)=> {
+                    } /> */}
+                        <input type="text" className="inpTab"  placeholder="Quantity"
+                        onChange={this.handleChange} id="quantity"/>
+                       { /* (event)=> {
                             this.changeUserInput(event.target.value)
                         }
-                    } />
-                        <input type="text" className="inpTab" value = {this.state.quantity} 
-                        onChange={
-                        (event)=> {
-                            this.changeUserInput(event.target.value)
-                        }
-                    } />
-                    <button onClick={()=>this.addToList(this.state.item, this.state.brand, this.state.units, this.state.quantity)}> Add to the Grocery list</button>
+                    } /> */}
+
+                    
+                    </form>
+                    <button onClick={()=>this.addToList()} className="subGroc"> Add to Grocery list</button>
             </div>
-                <div className="subContainer">
+                <div className="printList">
+                {/*<h1 className="headCSS">List</h1>*/}
                     {this.state.list.map((itemInTheList,i)=>{
-                    console.log(itemInTheList)
-                    return <Purchased item={itemInTheList} />
+                     return itemInTheList.isPurchased?<Purchased item={itemInTheList} />:''
                     })}
                 </div>
-                
+            </div>   
             </div>
         );
     }

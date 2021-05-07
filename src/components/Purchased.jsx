@@ -9,13 +9,15 @@ class Purchased extends Component {
     }
     render() {
         return (
-            <div class="grocContainer">
+            <div className="grocContainer">
                 
-                <div class="groceryList">
-                    <input type="text" value = {this.props.item.item} />
-                    <input type="text" value = {this.props.item.brand}/>
-                    <input type="text" value = {this.props.item.units}/>
-                    <input type="text" value = {this.props.item.quantity}/>
+                <div className="groceryList">
+                    <form>
+                    <p>{this.props.item.item}</p>
+                    <p>{this.props.item.brand}</p>
+                    <p>{this.props.item.units}</p>
+                    <p>{this.props.item.quantity}</p>
+                    </form>
                 </div>
             </div>
             

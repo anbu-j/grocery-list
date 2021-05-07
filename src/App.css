@@ -40,19 +40,48 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
+  border-style: dashed;
+  border-color: blue;
+  background-color: pink;
 }
 
 .inpContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   border-style: solid;
   border-color: seagreen;
+  width: 30vw;
+  height: 20vh;
+  background-color: chocolate;
 }
 
 .inpTab {
-  width: 15vw;
+  width: 11vw;
+  
+  display: flex;
+  align-content: space-between;
+  /*justify-content: space-between;*/
+  background-color:wheat  ;
+  text-decoration: white;
 }
 
+.inpForm {
+  /*display: flex;
+  align-content: space-around;
+  align-items: center;*/
+  margin: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.subGroc {
+  width: 20vw; 
+  height: 5vh;
+  margin: 10%;
+  background-color: blue;
+}
 .subContainer {
   display: flex;
   justify-content: space-between;
@@ -64,3 +93,10 @@
   width: 30vw;
 }
 
+
+
+.printList{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
